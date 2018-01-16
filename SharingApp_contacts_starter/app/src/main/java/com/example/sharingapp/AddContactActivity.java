@@ -49,18 +49,20 @@ public class AddContactActivity extends AppCompatActivity {
             return;
         }
 
-        if (!contact_list.isUsernameAvailable(username_str)){
-            username.setError("Username already taken!");
-            return;
+        for (Contact c : contact_list.getContacts()) {
+            if (c.getUsername().equals(username_str)) {
+                username.setError("Username already taken!");
+                return;
+            }
         }
 
         Contact contact = new Contact(username_str, email_str, null);
 
-        // Add contact
-        AddContactCommand cmd = new AddContactCommand(contact_list, contact, context);
-        cmd.execute();
+        // Add Contact
+        AddContactCommand add_contact_command = new AddContactCommand(contact_list, contact, context);
+        add_contact_command.execute();
 
-        boolean success = cmd.isExecuted();
+        boolean success = add_contact_command.isExecuted();
         if (!success) {
             return;
         }
@@ -69,4 +71,3 @@ public class AddContactActivity extends AppCompatActivity {
         finish();
     }
 }
-

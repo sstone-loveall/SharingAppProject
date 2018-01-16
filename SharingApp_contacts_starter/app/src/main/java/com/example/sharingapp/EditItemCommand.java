@@ -3,11 +3,9 @@ package com.example.sharingapp;
 import android.content.Context;
 
 /**
- * Created by sarahstone-loveall on 1/11/18.
+ * Command to edit a pre-existing item
  */
-
 public class EditItemCommand extends Command {
-
     private ItemList item_list;
     private Item old_item;
     private Item new_item;

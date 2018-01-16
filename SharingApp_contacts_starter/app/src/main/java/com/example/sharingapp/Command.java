@@ -1,20 +1,20 @@
 package com.example.sharingapp;
 
 /**
- * Created by sarahstone-loveall on 1/11/18.
+ * Superclass of AddContactCommand, EditContactCommand, DeleteContactCommand,
+ * AddItemCommand, EditItemCommand, DeleteItemCommand
  */
-
 public abstract class Command {
 
     private boolean is_executed;
 
-    public Command() {
+    public Command(){
         is_executed = false;
     }
 
     public abstract void execute();
 
-    public boolean isExecuted() {
+    public boolean isExecuted(){
         return is_executed;
     }
 

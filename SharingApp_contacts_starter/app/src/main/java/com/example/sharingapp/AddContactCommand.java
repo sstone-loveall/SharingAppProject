@@ -5,8 +5,8 @@ import android.content.Context;
 /**
  * Command to add contact
  */
-
 public class AddContactCommand extends Command {
+
     private ContactList contact_list;
     private Contact contact;
     private Context context;

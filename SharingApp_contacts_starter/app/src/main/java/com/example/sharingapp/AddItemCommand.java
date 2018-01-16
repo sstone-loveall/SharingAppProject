@@ -1,12 +1,10 @@
 package com.example.sharingapp;
-
 import android.content.Context;
 
 /**
  * Command to add item
  */
-
-public class AddItemCommand extends Command {
+public class AddItemCommand extends Command{
 
     private ItemList item_list;
     private Item item;
@@ -18,7 +16,7 @@ public class AddItemCommand extends Command {
         this.context = context;
     }
 
-    public void execute() {
+    public void execute(){
         item_list.addItem(item);
         setIsExecuted(item_list.saveItems(context));
     }
