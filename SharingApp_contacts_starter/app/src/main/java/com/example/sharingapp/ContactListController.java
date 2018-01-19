@@ -7,24 +7,12 @@ import java.util.ArrayList;
 /**
  * ContactListController is responsible for all communication between views and ContactList object
  */
-public class ContactListController  {
+public class ContactListController {
 
     private ContactList contact_list;
 
-    public ContactListController() {
-        this.contact_list = new ContactList();
-    }
-
-    public ContactListController(ContactList contact_list) {
+    public ContactListController(ContactList contact_list){
         this.contact_list = contact_list;
-    }
-
-    public void addObserver(Observer observer) {
-        contact_list.addObserver(observer);
-    }
-
-    public void removeObserver(Observer observer) {
-        contact_list.removeObserver(observer);
     }
 
     public void setContacts(ArrayList<Contact> contact_list) {
@@ -35,53 +23,61 @@ public class ContactListController  {
         return contact_list.getContacts();
     }
 
+    public ArrayList<String> getAllUsernames(){
+        return  contact_list.getAllUsernames();
+    }
+
     public boolean addContact(Contact contact, Context context) {
-        AddContactCommand cmd = new AddContactCommand(contact_list, contact, context);
-        cmd.execute();
-        return cmd.isExecuted();
+        AddContactCommand add_contact_command = new AddContactCommand(contact_list, contact, context);
+        add_contact_command.execute();
+        return add_contact_command.isExecuted();
     }
 
     public boolean deleteContact(Contact contact, Context context) {
-        DeleteContactCommand cmd = new DeleteContactCommand(contact_list, contact, context);
-        cmd.execute();
-        return cmd.isExecuted();
+        DeleteContactCommand delete_contact_command = new DeleteContactCommand(contact_list, contact, context);
+        delete_contact_command.execute();
+        return delete_contact_command.isExecuted();
     }
 
-    public boolean editContact(Contact contact, Contact updated_contact, Context context) {
-        EditContactCommand cmd = new EditContactCommand(contact_list, contact, updated_contact, context);
-        cmd.execute();
-        return cmd.isExecuted();
+    public boolean editContact(Contact contact, Contact updated_contact, Context context){
+        EditContactCommand edit_contact_command = new EditContactCommand(contact_list, contact, updated_contact, context);
+        edit_contact_command.execute();
+        return edit_contact_command.isExecuted();
     }
 
     public Contact getContact(int index) {
         return contact_list.getContact(index);
     }
 
-    public ArrayList<String> getAllUsernames() {
-        return contact_list.getAllUsernames();
-    }
-
-    public boolean hasContact(Contact contact) {
-        return contact_list.hasContact(contact);
+    public int getSize() {
+        return contact_list.getSize();
     }
 
     public Contact getContactByUsername(String username) {
         return contact_list.getContactByUsername(username);
     }
 
-    public boolean isUsernameAvailable(String username) {
-        return contact_list.isUsernameAvailable(username);
+    public boolean hasContact(Contact contact) {
+        return contact_list.hasContact(contact);
     }
 
     public int getIndex(Contact contact) {
         return contact_list.getIndex(contact);
     }
 
-    public int getSize() {
-        return contact_list.getSize();
-    }
-
     public void loadContacts(Context context) {
         contact_list.loadContacts(context);
+    }
+
+    public boolean isUsernameAvailable(String username){
+        return contact_list.isUsernameAvailable(username);
+    }
+
+    public void addObserver(Observer observer) {
+        contact_list.addObserver(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        contact_list.removeObserver(observer);
     }
 }

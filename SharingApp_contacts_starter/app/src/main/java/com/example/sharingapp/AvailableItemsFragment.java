@@ -28,4 +28,3 @@ public class AvailableItemsFragment extends ItemsFragment{
         return item_list_controller.filterItemsByStatus(status);
     }
 }
-

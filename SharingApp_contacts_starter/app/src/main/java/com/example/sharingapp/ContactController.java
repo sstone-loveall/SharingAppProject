@@ -7,22 +7,20 @@ public class ContactController {
 
     private Contact contact;
 
-    public ContactController() {
-        this.contact = new Contact(null, null, null);
-    }
-
-    public ContactController(Contact contact) {
+    public ContactController(Contact contact){
         this.contact = contact;
     }
 
-    public Contact getContact() { return this.contact; }
-
-    public void addObserver(Observer observer) {
-        contact.addObserver(observer);
+    public String getId(){
+        return contact.getId();
     }
 
-    public void removeObserver(Observer observer) {
-        contact.removeObserver(observer);
+    public void setId() {
+        contact.setId();
+    }
+
+    public void updateId(String id){
+        contact.updateId(id);
     }
 
     public String getUsername() {
@@ -41,12 +39,13 @@ public class ContactController {
         contact.setEmail(email);
     }
 
-    public String getId() {
-        return contact.getId();
+    public Contact getContact() {return this.contact;}
+
+    public void addObserver(Observer observer) {
+        contact.addObserver(observer);
     }
 
-    public void setId() {
-        contact.setId();
+    public void removeObserver(Observer observer) {
+        contact.removeObserver(observer);
     }
 }
-

@@ -1,4 +1,5 @@
 package com.example.sharingapp;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
 /**
  * Displays a list of all contacts
  * Note: You will not be able edit/delete contacts which are "active" borrowers
@@ -27,8 +29,8 @@ public class ContactsActivity extends AppCompatActivity implements Observer {
     private ArrayAdapter<Contact> adapter;
     private Context context;
 
-    protected void onCreate(Bundle savedInstanceState) {
 
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
@@ -38,14 +40,14 @@ public class ContactsActivity extends AppCompatActivity implements Observer {
         contact_list_controller.loadContacts(context);
         item_list_controller.loadItems(context);
 
-        // added this line because of runtime error
-        my_contacts = (ListView) findViewById(R.id.my_contacts);
-
         // When contact is long clicked, this starts EditContactActivity
         my_contacts.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener() {
+
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
+
                 Contact contact = adapter.getItem(pos);
+
                 // Do not allow an "active" borrower to be edited
                 active_borrowers_list_controller.setContacts(item_list_controller.getActiveBorrowers());
                 if (active_borrowers_list_controller != null) {
@@ -56,11 +58,14 @@ public class ContactsActivity extends AppCompatActivity implements Observer {
                         return true;
                     }
                 }
+
                 contact_list_controller.loadContacts(context); // must load contacts again here
                 int meta_pos = contact_list_controller.getIndex(contact);
+
                 Intent intent = new Intent(context, EditContactActivity.class);
                 intent.putExtra("position", meta_pos);
                 startActivity(intent);
+
                 return true;
             }
         });

@@ -3,7 +3,7 @@ package com.example.sharingapp;
 import android.content.Context;
 
 /**
- * Command to add contact
+ * Command to add a contact
  */
 public class AddContactCommand extends Command {
 
@@ -19,6 +19,6 @@ public class AddContactCommand extends Command {
 
     public void execute() {
         contact_list.addContact(contact);
-        setIsExecuted(contact_list.saveContacts(context));
+        super.setIsExecuted(contact_list.saveContacts(context));
     }
 }

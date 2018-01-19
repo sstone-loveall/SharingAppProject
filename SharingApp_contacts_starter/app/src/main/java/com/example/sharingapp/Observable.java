@@ -1,5 +1,4 @@
 package com.example.sharingapp;
-
 import java.util.ArrayList;
 
 /**
@@ -29,4 +28,5 @@ public class Observable {
             observers.remove(observer);
         }
     }
+
 }

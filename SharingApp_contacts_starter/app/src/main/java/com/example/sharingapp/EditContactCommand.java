@@ -3,9 +3,8 @@ package com.example.sharingapp;
 import android.content.Context;
 
 /**
- * Command to edit contact
+ * Command to edit a pre-existing contact
  */
-
 public class EditContactCommand extends Command {
 
     private ContactList contact_list;
@@ -23,6 +22,6 @@ public class EditContactCommand extends Command {
     public void execute() {
         contact_list.deleteContact(old_contact);
         contact_list.addContact(new_contact);
-        setIsExecuted(contact_list.saveContacts(context));
+        super.setIsExecuted(contact_list.saveContacts(context));
     }
 }

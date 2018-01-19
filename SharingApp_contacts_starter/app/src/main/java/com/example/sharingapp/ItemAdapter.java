@@ -73,4 +73,3 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         return convertView;
     }
 }
-

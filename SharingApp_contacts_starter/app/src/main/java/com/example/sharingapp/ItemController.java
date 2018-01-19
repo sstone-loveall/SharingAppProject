@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 /**
  * ItemController is responsible for all communication between views and Item object
  */
+
 public class ItemController {
 
     private Item item;
@@ -94,4 +95,5 @@ public class ItemController {
     public void removeObserver(Observer observer) {
         item.removeObserver(observer);
     }
+
 }
